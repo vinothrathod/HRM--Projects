@@ -1,0 +1,17 @@
+package com.example.API.Config;
+
+public class WebSocketConfig  implements WebSocketMessageBrokerConfigurer {
+	
+	 @Override
+	    public void configureMessageBroker(MessageBrokerRegistry registry) {
+	    	registry.setApplicationDestinationPrefixes("/app");
+	    	registry.enableSimpleBroker("/chats","/User");
+	    	registry.setUserDestinationPrefix("/User");
+	    } 
+
+	    @Override
+	    public void registerStompEndpoints(StompEndpointRegistry registry) {
+	        registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS();
+	    }
+
+}
